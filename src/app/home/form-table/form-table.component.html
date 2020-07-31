@@ -1,25 +1,42 @@
 <mat-table #table [dataSource]="myDataArray" class="mat-elevation-z8">
-   <ng-container matColumnDef="userName">
-     <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-     <mat-cell *matCellDef="let user"><div> {{user.userName}} </div></mat-cell>
+   <ng-container matColumnDef="firstName">
+     <mat-header-cell *matHeaderCellDef>firstname</mat-header-cell>
+     <mat-cell *matCellDef="let user"><div> {{user.firstName}} </div></mat-cell>
    </ng-container>
-   <ng-container matColumnDef="age">
-     <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
-     <mat-cell *matCellDef="let user"><div> {{user.age}} </div></mat-cell>
+   <ng-container matColumnDef="lastName">
+     <mat-header-cell *matHeaderCellDef>lastname</mat-header-cell>
+     <mat-cell *matCellDef="let user"><div> {{user.lastName}} </div></mat-cell>
    </ng-container>
+   <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef>email</mat-header-cell>
+    <mat-cell *matCellDef="let user"><div> {{user.email}} </div></mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef>phone</mat-header-cell>
+    <mat-cell *matCellDef="let user"><div> {{user.phone}} </div></mat-cell>
+  </ng-container>
    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
    <mat-row *matRowDef="let dataSource; columns: columnsToDisplay;"></mat-row>
- </mat-table>
+ </mat-table> 
  <p>
-   <mat-form-field apparence="legacy">
-     <mat-label>Name</mat-label>
-     <input matInput [(ngModel)]="newUser.userName" type="text" name="newuserName" id="newuserName" class="form-control">
-   </mat-form-field>
+   <mat-form-field apparence="legacy"> <br>
+     <mat-label>firstname</mat-label>  <br>
+     <input matInput [(ngModel)]="newUser.firstName" type="text" name="newfirstName" id="newfirstName" placeholder="firstName" class="form-control"> 
+   </mat-form-field> <br> 
  
-   <mat-form-field apparence="legacy">
-     <mat-label>Age</mat-label>
-     <input matInput [(ngModel)]="newUser.age" type="text" name="newuserAge" id="newAge" class="form-control">
-   </mat-form-field>
- </p>
- <button mat-button type="button" (click)="addName()">submit</button>
+   <mat-form-field apparence="legacy"> <br>
+    <mat-label>lastname</mat-label>  <br>
+    <input matInput [(ngModel)]="newUser.lastName" type="text" name="newlastName" id="newlastName" placeholder="lastName" class="form-control"> 
+   </mat-form-field> <br>
+
+   <mat-form-field apparence="legacy"> <br>
+   <mat-label>email</mat-label>  <br>
+    <input matInput [(ngModel)]="newUser.email" type="email" name="newemail" id="newemail" placeholder="email" class="form-control"> 
+  </mat-form-field> <br>
+  <mat-form-field apparence="legacy"> <br>
+    <mat-label>phone</mat-label> <br>
+    <input matInput [(ngModel)]="newUser.phone" type="number" name="newphone" id="newphone" placeholder="phone" class="form-control"> 
+  </mat-form-field> <br>
+ </p> <br>
+ <button mat-button type="button" (click)="addUser()">Add</button>
  

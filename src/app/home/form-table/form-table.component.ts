@@ -3,8 +3,10 @@ import {MatTableDataSource} from '@angular/material/table';
 import { FormGroup, FormControl } from '@angular/forms';
 //import {User} from '../form-table/user.model';
 export interface User {
-  userName: string;
-  age: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: number;
 }
 @Component({
   selector: 'app-form-table',
@@ -14,20 +16,20 @@ export interface User {
 export class FormTableComponent implements OnInit {
  //form:FormGroup;
 
- columnsToDisplay: string[] = ["userName", "age"];
+ columnsToDisplay: string[] = ["firstName", "lastName", "email", "phone"];
  public USER_DATA: User[] = [
-   { userName: "Wacco", age: 12 },
-   { userName: "Wacca", age: 13 },
-   { userName: "Waccu", age: 14 }
+   { firstName: "Aco", lastName: "Acovski", email: "test@test1.com", phone: 968726385 },
+   { firstName: "Dule", lastName: "Dulevski", email: "test@test2.com", phone: 7868726385 },
+   { firstName: "Eli", lastName: "Elevska", email: "test@test3.com", phone: 2368726385 }
  ];
- public newUser = {userName: "ABC", age: 15};
+ public newUser = { firstName: "", lastName: "", email: "", phone: 0 };
  public myDataArray: any;
 
- addName() {
+ addUser() {
    const newUsersArray = this.USER_DATA;
    newUsersArray.push(this.newUser);
    this.myDataArray = [...newUsersArray];
-   this.newUser = {userName:"", age: 0};
+   this.newUser = { firstName: "", lastName: "", email: "", phone: 0 }
    console.warn(this.myDataArray);
  }
 
