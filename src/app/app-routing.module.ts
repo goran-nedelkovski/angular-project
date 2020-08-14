@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 //import { compileBaseDefFromMetadata } from '@angular/compiler';
 import { HomeComponent } from './home/home.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'home',
     component:HomeComponent
+  },
+  {
+    path: 'user-details',
+    component: UserDetailsComponent
   }
   
 ];

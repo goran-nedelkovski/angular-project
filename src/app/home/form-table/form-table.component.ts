@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { FormGroup, FormControl } from '@angular/forms';
-//import {User} from '../form-table/user.model';
+import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+//import {User} from './home/form-table/user.model';
 export interface User {
   firstName: string;
   lastName: string;
@@ -15,6 +17,7 @@ export interface User {
 })
 export class FormTableComponent implements OnInit {
  //form:FormGroup;
+ @Input() row: User;
 
  columnsToDisplay: string[] = ["firstName", "lastName", "email", "phone"];
  public USER_DATA: User[] = [
@@ -33,11 +36,21 @@ export class FormTableComponent implements OnInit {
    console.warn(this.myDataArray);
  }
 
- constructor() {
+ constructor(private http:HttpClient,private router:Router) {
    this.myDataArray = new MatTableDataSource<User>([...this.USER_DATA]);
  }
 
  ngOnInit() {}
+
+  public getRecord(row: User) {
+    console.log(row);
+    //var json = JSON.stringify(row);
+    //this.http.get('http://localhost:4200/user-details/'+'?row='+encodeURIComponent(json))
+
+//    localStorage.setItem('row', row)
+    this.router.navigate(['/user-details'], {queryParams:{firstName:'Goran',lastName:'Nedelkovski',email:'test@test5.com',phone:'12345'}})
+//    //document.write(row)
+  }
    
 }
 

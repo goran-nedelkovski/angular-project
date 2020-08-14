@@ -16,7 +16,7 @@
     <mat-cell *matCellDef="let user"><div> {{user.phone}} </div></mat-cell>
   </ng-container>
    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-   <mat-row *matRowDef="let dataSource; columns: columnsToDisplay;"></mat-row>
+   <mat-row *matRowDef="let row; columns: columnsToDisplay;" (click)=getRecord(row)></mat-row>
  </mat-table> 
  <p>
    <mat-form-field apparence="legacy"> <br>

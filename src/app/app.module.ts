@@ -16,6 +16,8 @@ import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatAutocompleteModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import {MatButtonModule} from '@angular/material';
     HomeComponent,
     //TableComponent,
     //FormComponent,
-    FormTableComponent
+    FormTableComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {MatButtonModule} from '@angular/material';
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
