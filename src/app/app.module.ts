@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './token-interceptor.service';
+import { AuthGuard } from './auth.guard';
+import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +22,8 @@ import {MatAutocompleteModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import {AuthService} from './auth.service';
 
 
 @NgModule({
@@ -28,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     //TableComponent,
     //FormComponent,
     FormTableComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

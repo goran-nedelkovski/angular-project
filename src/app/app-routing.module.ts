@@ -4,13 +4,19 @@ import { LoginComponent } from './login/login.component';
 //import { compileBaseDefFromMetadata } from '@angular/compiler';
 import { HomeComponent } from './home/home.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { RegisterComponent } from './register/register.component';
+import {AuthGuard} from './auth.guard';
 
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/login',
+    redirectTo:'/register',
     pathMatch: 'full'
+  },
+  {
+    path:'register',
+    component:RegisterComponent
   },
   {
     path:'login',
@@ -18,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component:HomeComponent
+    component:HomeComponent,
+    canActivate: [AuthGuard]      // when we navigate on this route (home), the canActivate Guard is executed. 
   },
   {
     path: 'user-details',

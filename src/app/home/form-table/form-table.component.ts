@@ -47,9 +47,9 @@ export class FormTableComponent implements OnInit {
     //var json = JSON.stringify(row);
     //this.http.get('http://localhost:4200/user-details/'+'?row='+encodeURIComponent(json))
 
-//    localStorage.setItem('row', row)
-    this.router.navigate(['/user-details'], {queryParams:{firstName:'Goran',lastName:'Nedelkovski',email:'test@test5.com',phone:'12345'}})
-//    //document.write(row)
+//localStorage.setItem('row', row)
+    this.router.navigate(['/user-details'], {queryParams:{firstName:'Atanasko',lastName:'Boris Mitrev',email:'test@test5.com',phone:'12345'}})
+//document.write(row)
   }
    
 }
