@@ -17,8 +17,8 @@ export class ContactsService {
   constructor(private http: HttpClient) { }
 
 
-  getContacts():Observable<ContactModel[]> {
-          return this.http.get<ContactModel[]>(this._loadContacts);
+  getContacts(userId: string):Observable<ContactModel[]> {
+          return this.http.get<ContactModel[]>(this._loadContacts + "?userId=" + userId);
           //so <Array<ContactModel>> ke ja zeme celata niza-array od site objecti koi se od tip ContactModel
         
         }

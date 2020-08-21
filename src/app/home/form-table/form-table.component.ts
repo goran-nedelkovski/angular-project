@@ -31,9 +31,10 @@ export class FormTableComponent implements OnInit {
 
  currentUser = {
   email: '',
-  password: ''
+  password: '', 
+  _id: ''
 } 
-contactList: ContactModel[];
+contactList: ContactModel[] = [];
   contactForm: FormGroup;
   contact: ContactModel;
 
@@ -50,7 +51,7 @@ contactList: ContactModel[];
              private _router:Router,
              private _auth:AuthService,
              private _contacts: ContactsService) {
-   this.myDataArray = new MatTableDataSource<User>([...this.USER_DATA]);
+   
  }
 
  ngOnInit() {
@@ -78,7 +79,7 @@ contactList: ContactModel[];
       contact.email = this.contactForm.get('email').value;
       contact.phone = this.contactForm.get('phone').value;
       //contact.userId = localStorage.getItem('userId');
-      contact.userId = GUID.newGuid().toString();
+      contact.userId = this.currentUser._id; // GUID.newGuid().toString();
 
       this._contacts.saveFormContact(contact).subscribe(result => {
         console.log(result);
@@ -93,29 +94,31 @@ contactList: ContactModel[];
     }
   this.getContacts();
 
-   const newUsersArray = this.USER_DATA;
-   newUsersArray.push(this.newUser);
-   this.myDataArray = [...newUsersArray];
-   this.newUser = { firstName: "", lastName: "", email: "", phone: 0}
-   console.warn(this.myDataArray);
+  //  const newUsersArray = this.USER_DATA;
+  //  newUsersArray.push(this.newUser);
+  //  this.myDataArray = [...newUsersArray];
+  // this.newUser = { firstName: "", lastName: "", email: "", phone: 0}
+  //  console.warn(this.myDataArray);
  }
 
-  public getRecord(row: User) {
+  public getRecord(row: ContactModel) {
     console.log(row);
     //var json = JSON.stringify(row);
     //this.http.get('http://localhost:4200/user-details/'+'?row='+encodeURIComponent(json))
 
 //localStorage.setItem('row', row)
-    this._router.navigate(['/user-details'], {queryParams:{firstName:'Atanasko',lastName:'Boris Mitrev',email:'test@test5.com',phone:'12345'}})
+    this._router.navigate(['/user-details'], {queryParams:{firstName: row.firstName, lastName:row.lastName,email:row.email,phone:row.phone}})
 //document.write(row)
   }
 
   getUser() {
     this._auth.getUser().subscribe(
       res => {
+        console.log("currentUser", res);
+        
         this.currentUser = res; 
         if(this.currentUser) {
-          this.getContacts;
+          this.getContacts();
         }
         //this._router.navigate(['/table'])
         
@@ -139,15 +142,16 @@ contactList: ContactModel[];
   }
 
   getContacts() {
-    this._contacts.getContacts().subscribe(result => {
+    this._contacts.getContacts(this.currentUser._id).subscribe(result => {
+      console.log(result);
       this.contactList = result;
+      console.log(this.contactList);
+
+      this.myDataArray = new MatTableDataSource<ContactModel>([...this.contactList]);
+      
     },
       error => {
         console.log(error);
       });
     }
-
-   
 }
-
-

@@ -5,11 +5,11 @@
     <!-- - <a (click)="deleteUser(user.id)">Delete</a> -->
   </li>
 </ul>
-<table>
+<!-- <table>
   <tr *ngFor="let contact of contactList">
     <td>{{contact | json}}</td>
   </tr>
-</table>
+</table> -->
 
 <mat-table #table [dataSource]="myDataArray" class="mat-elevation-z8">
    <ng-container matColumnDef="firstName">
