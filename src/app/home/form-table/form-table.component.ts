@@ -8,8 +8,8 @@ import { ContactModel } from '../../models/contact-model';
 import { AuthService } from '../../auth.service';
 import { ContactsService } from '../../contacts.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { GUID } from '../../models/Guid';
-import * as jwt_decode from 'jwt-decode';
+//import { GUID } from '../../models/Guid';
+//import * as jwt_decode from 'jwt-decode';
 
 
 //import {User} from './home/form-table/user.model';
@@ -39,11 +39,11 @@ contactList: ContactModel[] = [];
   contact: ContactModel;
 
  columnsToDisplay: string[] = ["firstName", "lastName", "email", "phone"];
- public USER_DATA: User[] = [
-   { firstName: "Aco", lastName: "Acovski", email: "test@test1.com", phone: 968726385 },
-   { firstName: "Dule", lastName: "Dulevski", email: "test@test2.com", phone: 7868726385 },
-   { firstName: "Eli", lastName: "Elevska", email: "test@test3.com", phone: 2368726385 }
- ];
+//  public USER_DATA: User[] = [
+//    { firstName: "Aco", lastName: "Acovski", email: "test@test1.com", phone: 968726385 },
+//    { firstName: "Dule", lastName: "Dulevski", email: "test@test2.com", phone: 7868726385 },
+//    { firstName: "Eli", lastName: "Elevska", email: "test@test3.com", phone: 2368726385 }
+//  ]
  public newUser = { firstName: "", lastName: "", email: "", phone: 0};
  public myDataArray: any;
 
